@@ -7,6 +7,8 @@ class MalawiMap extends React.Component {
     selectedDistricts: []
   };
 
+  fill = this.props.fill ? this.props.fill : "#9D9D9D";
+
   _updateSelectedDistricts = e => {
     const district = e.target.id;
     const updatedSelectedDistricts = this.state.selectedDistricts.includes(
@@ -58,7 +60,7 @@ class MalawiMap extends React.Component {
             <g
               id="Malawi Map"
               transform="translate(-68.000000, -231.000000)"
-              fill="#9D9D9D"
+              fill={this.fill}
             >
               {this._renderFilterMap(this.props)}
             </g>
