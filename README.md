@@ -19,6 +19,7 @@ const MapContainer = () => (
       onClick={districts => console.log(districts)} //Any Valid Callback will do here
       height={300} //Any valid Number
       selectedColor="#0468b1" //Any Valid Color Hex Code
+      fill="#9D9D9D" //Any Valid Color Hex Code | optional
     />
   </div>
 )
