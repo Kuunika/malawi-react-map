@@ -1,13 +1,24 @@
 import React, { Fragment, useState } from "react";
 import ReactTooltip from "react-tooltip";
 import { Path, districtsData } from "./components";
+import PropTypes from "prop-types";
 
 class MalawiMap extends React.Component {
   state = {
     selectedDistricts: []
   };
-
-  fill = this.props.fill ? this.props.fill : "#9D9D9D";
+  static propTypes = {
+    onClick: PropTypes.func,
+    height: PropTypes.number,
+    selectedColor: PropTypes.string,
+    fill: PropTypes.string
+  };
+  static defaultProps = {
+    onClick: () => {},
+    height: 300,
+    selectedColor: "#0468b1",
+    fill: "#9D9D9D"
+  };
 
   _updateSelectedDistricts = e => {
     const district = e.target.id;
@@ -21,7 +32,7 @@ class MalawiMap extends React.Component {
     this.props.onClick(updatedSelectedDistricts);
   };
 
-  _renderFilterMap = props => {
+  _renderFilterMap = () => {
     return (
       <g id="Map-Filter" transform="translate(26.000000, 160.000000)">
         <g id="districts" transform="translate(42.000000, 71.000000)">
@@ -48,7 +59,7 @@ class MalawiMap extends React.Component {
           className="map"
           viewBox="0 0 195 481"
           version="1.1"
-          style={{ height: this.props.height - 10 }}
+          style={{ height: this.props.height }}
         >
           <g
             id="Page-1"
@@ -60,9 +71,9 @@ class MalawiMap extends React.Component {
             <g
               id="Malawi Map"
               transform="translate(-68.000000, -231.000000)"
-              fill={this.fill}
+              fill={this.props.fill}
             >
-              {this._renderFilterMap(this.props)}
+              {this._renderFilterMap()}
             </g>
           </g>
         </svg>

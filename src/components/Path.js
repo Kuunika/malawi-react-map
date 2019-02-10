@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const Path = props => {
   const { selectedColor, district, onClick, selectedDistricts } = props;
@@ -18,5 +19,14 @@ const Path = props => {
       id={name}
     />
   );
+};
+Path.propTypes = {
+  district: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    boundary: PropTypes.string.isRequired
+  }),
+  selectedDistricts: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onClick: PropTypes.func.isRequired,
+  selectedColor: PropTypes.string.isRequired
 };
 export default Path;
